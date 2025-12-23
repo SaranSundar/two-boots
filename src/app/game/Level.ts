@@ -96,8 +96,7 @@ export class Level extends Container {
 
     // Also remove from level data
     const index = this.levelData.tiles.findIndex(
-      (tile) =>
-        tile.type === "coin" && tile.x === gridX && tile.y === gridY,
+      (tile) => tile.type === "coin" && tile.x === gridX && tile.y === gridY,
     );
 
     if (index !== -1) {

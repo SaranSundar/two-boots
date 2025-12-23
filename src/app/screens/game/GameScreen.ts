@@ -1,5 +1,4 @@
 import { Container } from "pixi.js";
-import type { Ticker } from "pixi.js";
 
 import { engine } from "../../getEngine";
 import { Level } from "../../game/Level";
@@ -94,7 +93,7 @@ export class GameScreen extends Container {
     // Music will be paused automatically by engine on visibility change
   }
 
-  public update(_time: Ticker): void {
+  public update(): void {
     if (this.paused || this.gameOver || !this.player || !this.level) return;
 
     // Update player movement from input

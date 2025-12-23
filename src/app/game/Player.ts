@@ -1,7 +1,5 @@
 import { Container, Sprite, Texture } from "pixi.js";
 
-import { engine } from "../getEngine";
-
 import type { Level } from "./Level";
 
 const TILE_SIZE = 32;

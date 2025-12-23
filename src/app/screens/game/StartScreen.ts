@@ -1,5 +1,6 @@
 import { Container, Sprite, Texture } from "pixi.js";
 import { animate } from "motion";
+import type { ObjectTarget } from "motion/react";
 
 import { engine } from "../../getEngine";
 import { Button } from "../../ui/Button";
@@ -37,12 +38,18 @@ export class StartScreen extends Container {
   public async show(): Promise<void> {
     // Fade in
     this.alpha = 0;
-    await animate(this, { alpha: 1 } as any, { duration: 0.5, ease: "linear" });
+    await animate(this, { alpha: 1 } as ObjectTarget<this>, {
+      duration: 0.5,
+      ease: "linear",
+    });
   }
 
   public async hide(): Promise<void> {
     // Fade out
-    await animate(this, { alpha: 0 } as any, { duration: 0.3, ease: "linear" });
+    await animate(this, { alpha: 0 } as ObjectTarget<this>, {
+      duration: 0.3,
+      ease: "linear",
+    });
   }
 
   public resize(width: number, height: number): void {
@@ -51,7 +58,10 @@ export class StartScreen extends Container {
     this.background.y = height / 2;
 
     // Scale background to fit
-    const scale = Math.min(width / this.background.texture.width, height / this.background.texture.height);
+    const scale = Math.min(
+      width / this.background.texture.width,
+      height / this.background.texture.height,
+    );
 
     this.background.scale.set(scale);
 
