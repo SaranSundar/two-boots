@@ -33,7 +33,10 @@ export class LevelLoader {
    */
   public static async loadLevel(levelNum: number): Promise<LevelData> {
     // Load via fetch (NOT AssetPack)
-    const response = await fetch(`/data/level${levelNum}.txt`);
+    // Use BASE_URL for GitHub Pages compatibility
+    const response = await fetch(
+      `${import.meta.env.BASE_URL}data/level${levelNum}.txt`,
+    );
 
     if (!response.ok) {
       throw new Error(`Level ${levelNum} not found`);
