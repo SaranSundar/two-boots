@@ -1,0 +1,1 @@
+This is a basic platformer game that showcases basic movement with jumps and collisions and rudimentary pixel art graphics for a computer science 1 end of year project.

@@ -1,0 +1,13 @@
+Level4 Name: Journey Begins
+Level Background: white.png
+Level Size (Blocks): 10 x 20
+....................
+..........z........d
+ggg..ggggg.ggggg..gg
+ggg...............gg
+ggg...............gg
+ggg...............gg
+ggg...............gg
+gggsssssssssssssssgg
+gggggggggggggggggggg
+gggggggggggggggggggg
