@@ -5,7 +5,6 @@ import { Level } from "../../game/Level";
 import { LevelLoader } from "../../game/LevelLoader";
 import { Player } from "../../game/Player";
 import { CoinCounter } from "../../game/ui/CoinCounter";
-import { VirtualControls } from "../../game/ui/VirtualControls";
 
 import { GameOverScreen } from "./GameOverScreen";
 import { WinScreen } from "./WinScreen";
@@ -22,8 +21,6 @@ export class GameScreen extends Container {
   private currentLevelNum: number = 1;
   private coinsCollected: number = 0;
   private coinCounter!: CoinCounter;
-
-  private virtualControls!: VirtualControls;
 
   // Keyboard state
   private keys = { left: false, right: false, space: false };
@@ -64,10 +61,6 @@ export class GameScreen extends Container {
     // Create coin counter
     this.coinCounter = new CoinCounter();
     this.uiLayer.addChild(this.coinCounter);
-
-    // Create virtual controls for mobile
-    this.virtualControls = new VirtualControls();
-    this.uiLayer.addChild(this.virtualControls);
   }
 
   public async show(): Promise<void> {
@@ -97,15 +90,15 @@ export class GameScreen extends Container {
     if (this.paused || this.gameOver || !this.player || !this.level) return;
 
     // Update player movement from input
-    if (this.keys.left || this.virtualControls.leftPressed) {
+    if (this.keys.left) {
       this.player.moveLeft();
-    } else if (this.keys.right || this.virtualControls.rightPressed) {
+    } else if (this.keys.right) {
       this.player.moveRight();
     } else {
       this.player.stopMove();
     }
 
-    if (this.keys.space || this.virtualControls.jumpPressed) {
+    if (this.keys.space) {
       this.player.jump();
     }
 
@@ -232,9 +225,6 @@ export class GameScreen extends Container {
     // Position UI elements
     this.coinCounter.x = 20;
     this.coinCounter.y = 20;
-
-    // Position virtual controls
-    this.virtualControls.positionControls(width, height);
   }
 
   public async pause(): Promise<void> {
